@@ -1,7 +1,5 @@
 
--- Active: 1769107379136@@127.0.0.1@3306@sakila
-Good morning ! 
-We had Ritesh Reddy give us a quick recap of what we learnt in the last lecture about SQL language.
+
 DISTINCT keyword is used to query along with SELECT keyword to identify only the unique records
 COUNT is another keyword used to get the total number of entries
 
