@@ -1,1 +1,110 @@
+Quick Recap on select,where,like (%), Count, distinct, OrderBy,Limit,OR(Nor), Having, 
+
+Diff between Having and where class
+(Having works on Group and Where applies on all rows in a table)
+Ex: 
+How is wildcards different from Where clause
+When we know what to search word 'data'then we apply %data%
+data% then it start searching for words starting with data but can end with anything.
+
+
+23rd jan class---
+Built-in functions in sequl
+#'strings'
+select * from sakila.film;
+Extra padding to the data.
+
+Q: Where do we use this padding
+
+select title 
+
+
+#Substring is very important
+select title, SUBSTRING(title, 3, 9) AS short_title
+FROM Sakila.film;
+
+#Concatination
+When we want to add 2 string then we use CONCAT
+
+#REVERSE(title)
+
+#Length
+
+#Substring with locate
+Select email, SUBSTRING(email,LOCATE('@',email) +1) As Domain
+from sakila.customer;
+
+#Substring-index
+Select Substring_index(email,'@',-1) from sakila.customer;
+
+select email,
+substring_index(SUBSTRING(email, LOCATE('@',email) +1), '.',-1) AS domain
+FROM sakila.customer;
+
+#UPPER,LOWER
+
+#LEFT,RIGHT
+
+If we put the aggregations then we must put them in  the groupby
+SELECT Left(title,1) As First_letter, right(title,1) as Last_letter, title , COUNT(*) AS Film_Count
+from sakila.film 
+GROUP BY Left(title,2),right(title,3)
+ORDER BY Film_Count DESC;
+
+
+#CASE, IF,WHEN,ELSE
+Select last_name
+CASE
+WHEN LEFT(last_name,1) BETWEEN 'A' AND 'M' THEN 'Group A_M'
+WHEN LEFT(last_name,1) BETWEEN 'N' AND 'Z' THEN 'Group N_Z'
+ELSE 'Other'
+END AS group_label
+from sakila.customer;
+
+#REPLACE
+
+#2 diff Where filters
+hardcord names,with like some dynamic nature applies to where filter
+How to acheive 100% dynamic nature to where clause
+#REGEXP
+cap is for not
+where last_name REGEXP'[^aeiouAEIOU]{3}';
+
+#end with vowel    $     where last_name REGEXP'[aeiouAEIOU]
+
+#count
+
+#Neumarical data
+Math
+#COUNT #SUM
+Alter table sakila.film
+select rental_duration from sakila.film
+ADD Column cost_efficiency_dup1 DECIMAL(6,2);
+SET SQL_SAFE_UPDATES =0;
+
+UPDATE sakila.film
+SET cost_efficiency_dup1= rental_duration *2
+WHERE length is NOT NULL;
+
+
+#Floor, #Random
+#Ceil #Floor
+
+0.99 Ceil -- 1 , Floor --0
+2.90 ceil --3, Floor --2
+#MOD is a percentail operater so it gives reminder value
+#Round
+#Month, monthname
+
+#NOW, #MAX #CURDATE #CURRENT_TIME
+
+#CASTING: Try to change the datatype of the columns
+Decimal to Int or Int to String etc
+Try and see if that works. Finish 1st assignment and Monday we will get a new assignament on functions
+Monday: SubQueries, Joins,Views,Stored Procedures
+
+
+
+
+
 
