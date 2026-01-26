@@ -58,8 +58,11 @@ group by length
 having count(title) >5
 
 #12.List all actors who have appeared in more than 10 films
-select * from actor
-#Still trying
+select CONCAT(ac.first_name, ' ' ,ac.last_name) AS Customer_name, count(fa.film_id) AS film_count
+FROM actor ac JOIN film_actor fa ON ac.actor_id = fa.actor_id
+Group BY Customer_name
+having film_count > 10
+Order by film_count DESC;
 
 #13.Find the top 5 films with the highest rental rates and longest lengths combined, ordering by rental rate first and length second.
 SELECT * FROM SAKILA.FILM
