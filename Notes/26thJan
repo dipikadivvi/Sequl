@@ -1,0 +1,20 @@
+#Recap of previous class.
+CAST works from int to string but not from string to integer
+Try some built-in functions
+Normalisation--- 
+subquery,join,Corelated sub-queries
+where do we use sub-queries and Joins in specific
+#Disadvantages with sub-queries.
+If w use count then we should have GroupBY
+247-- returning different values by sub query. So we should limit 1 to make sure only 1 number comes as output to map with output. This is where we need joins
+co-related sub-query outside of the query, the output is gone. Because it is not physically creating the table or data
+complexcity, re-usability,query execution time is more
+CTE-commmon table expression
+JOINS--cardinality relationships 1:1,1:Many,Many:1,Many:Many
+1:1 One record of my first table matches with 1 record of my second table username:status(Active/Inactive)
+1:Many unique orderID but USER ID many be multiple
+Many:1 Many orders placed by 1 customer
+many:many friendship  many persons have many friends. This can be achieved by using bridge table. A table going to be join by the same table.userid with friendid
+Buil-in functions assignment
+order of execution in subquery
+subquery in select statement or in the where clause... it depends on the position of where you write a subquery.
