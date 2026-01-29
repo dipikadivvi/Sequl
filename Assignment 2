@@ -1,1 +1,45 @@
+#Identify if there are duplicates in Customer table. Don't use customer id to check the duplicates
+SELECT 
+    first_name, 
+    last_name, 
+    COUNT(*) as OccurrenceCount
+FROM 
+    Customer
+GROUP BY 
+    first_name, 
+    last_name
+HAVING 
+    COUNT(*) > 1;
+    
+    
+    select count(DISTINCT(customer_id)) AS customers from customer;
+ 
+    select count(customer_id) AS customers from customer;
+    
+    #2Number of times letter 'a' is repeated in film descriptions
+  SELECT CHAR_LENGTH(description) - CHAR_LENGTH(REPLACE(description, 'a', '')) AS occurrences_of_a from film;
 
+select char_length(description) - char_length(replace(description,'a','')) AS occurance from film;
+
+#3Number of times each vowel is repeated in film descriptions
+SELECT
+  SUM(LENGTH(description) - LENGTH(REPLACE(LOWER(description), 'a', ''))) AS count_a,
+  SUM(LENGTH(description) - LENGTH(REPLACE(LOWER(description), 'e', ''))) AS count_e,
+  SUM(LENGTH(description) - LENGTH(REPLACE(LOWER(description), 'i', ''))) AS count_i,
+  SUM(LENGTH(description) - LENGTH(REPLACE(LOWER(description), 'o', ''))) AS count_o,
+  SUM(LENGTH(description) - LENGTH(REPLACE(LOWER(description), 'u', ''))) AS count_u
+FROM film;
+
+ #4.Display the payments made by each customer
+       -- 1. Month wise
+       -- 2. Year wise
+       -- 3. Week wise
+  select * from customer;
+  select * from payment;
+  
+  select customer_id,
+  
+  group by customer_id AS uniquecustomer
+  
+        
+        
