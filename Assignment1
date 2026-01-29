@@ -70,14 +70,32 @@ ORDER BY rental_rate DESC, length DESC
 LIMIT 5;
 
 #14.Show all customers along with the total number of rentals they have made, ordered from most to least rentals.
-select * from sakila.customer
-select * from sakila.rent
-#Still trying
+select cu.customer_id,CONCAT(cu.first_name,' ',cu.last_name) AS customer_name,count(re.rental_id) AS rental_Count
+FROM customer cu JOIN rental re ON cu.customer_id = re.customer_id
+GROUP BY cu.customer_id,cu.first_name,cu.last_name
+ORDER BY rental_Count DESC;
 
 
 #15.List the film titles that have never been rented.
-select * from film
-#Still trying to do
+#15.List the film titles that have never been rented.
+select title,rental_duration from film
+where rental_duration LIKE 'NULL';
+
+SELECT fi.title
+FROM sakila.film fi
+LEFT JOIN sakila.inventory iv ON fi.film_id = iv.film_id
+LEFT JOIN sakila.rental re ON iv.inventory_id = re.inventory_id
+WHERE re.rental_id IS NULL;
+
+SELECT
+    concat(c.first_name, " ", c.last_name) AS "Full_name", count(r.rental_id) as "Number of Rentals"
+FROM
+    customer c, rental r
+WHERE 
+    c.customer_id = r.customer_id
+GROUP BY
+    c.customer_id
+HAVING count(r.rental_id) is NOT NULL;
 
 
 
