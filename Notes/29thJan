@@ -1,0 +1,27 @@
+Re-cap of previous class
+#examples for many to many relationships
+Film and Actors,Student and subjects,Graph, employee and client, 
+Many to one and One to Many Examples
+Doctor-->Patients
+Politics President-->many
+Manager-->Employee
+Brand-->models
+appication -->users
+county-->states
+Employees-->Department
+#Employee and manager example.
+JOINS
+cartetion product or cross join,self join,left join,
+
+Full outer join and cross join difference
+Normalisations, why do we use them
+1-->Only one record per column.
+2--> No partial dependency on Primary Key
+3)--> No Transative dependency
+To Optimize, space, cost, ,time,competence,uniqueness,fecting time we use normalisation
+
+ON 1=0 is false condition, which will never be true
+You want condition to fail but fetch all the data and matching data on both tables
+If no relation ship then we make bridge table and join tables.
+
+
