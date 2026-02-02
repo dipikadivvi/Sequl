@@ -34,12 +34,86 @@ FROM film;
        -- 1. Month wise
        -- 2. Year wise
        -- 3. Week wise
-  select * from customer;
-  select * from payment;
+# Month wise payment
+SELECT 
+    customer_id,
+    FORMAT(payment_date, 'yyyy-MM') AS PaymentMonth,
+    SUM(amount) AS TotalAmount
+FROM 
+    payment
+GROUP BY 
+    customer_id, 
+    FORMAT(payment_date, 'yyyy-MM')
+ORDER BY 
+    customer_id, 
+    PaymentMonth;
+ #Date wise payment   
+    SELECT 
+    customer_id,
+    YEAR(payment_date) AS PaymentYear,
+    SUM(amount) AS TotalAmount
+FROM 
+    payment
+GROUP BY 
+    customer_id, 
+    YEAR(payment_date)
+ORDER BY 
+    customer_id, 
+    PaymentYear;
+#Week wise payment    
+    SELECT 
+    customer_id,
+    YEAR(payment_date) AS PaymentYear,
+    week(payment_date) AS WeekNumber,
+    SUM(amount) AS TotalAmount
+FROM 
+    payment
+GROUP BY 
+    customer_id, 
+    YEAR(payment_date), 
+    week(payment_date)
+ORDER BY 
+    customer_id, 
+    PaymentYear, 
+    WeekNumber;
+
+Check if any given year is a leap year or not. You need not consider any table from sakila database. Write within the select query with hardcoded date
+
+    SELECT
+    CASE
+        WHEN (2024 % 400 = 0) THEN 'Leap Year'
+        WHEN (2024 % 100 = 0) THEN 'Not a Leap Year'
+        WHEN (2024 % 4 = 0) THEN 'Leap Year'
+        ELSE 'Not a Leap Year'
+    END AS LeapYearStatus;
+    
+   SELECT YEAR(NOW());
+
+-- Display number of days remaining in the current year from today.
+SELECT DATEDIFF(CAST(CONCAT(YEAR(CURDATE()), '-12-31') AS DATE), CURDATE()) AS Days_Remaining;
+
+-- Display quarter number(Q1,Q2,Q3,Q4) for the payment dates from payment table.
+SELECT 
+    payment_id, 
+    payment_date, 
+    CASE 
+        WHEN MONTH(payment_date) BETWEEN 1 AND 3 THEN 'Q1'
+        WHEN MONTH(payment_date) BETWEEN 4 AND 6 THEN 'Q2'
+        WHEN MONTH(payment_date) BETWEEN 7 AND 9 THEN 'Q3'
+        WHEN MONTH(payment_date) BETWEEN 10 AND 12 THEN 'Q4'
+        ELSE 'wrong input'
+    END
+FROM payment;
+
+-- Display the age in year, months, days based on your date of birth. 
+ --  For example: 21 years, 4 months, 12 days
+ SELECT
+    TIMESTAMPDIFF(YEAR, '1991-08-12', CURDATE()) AS Years,
+    TIMESTAMPDIFF(MONTH, '1991-08-12', CURDATE()) % 12 AS Months,
+    DATEDIFF(CURDATE(), DATE_ADD('1991-08-12', INTERVAL TIMESTAMPDIFF(MONTH, '1991-08-12', CURDATE()) MONTH)) AS Days;
+ 
   
-  select customer_id,
-  
-  group by customer_id AS uniquecustomer
+
   
         
         
