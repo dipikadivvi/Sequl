@@ -1,0 +1,8 @@
+re-cap of previous class
+sub-queries are query execution level(only user/query level),complexicity,re-usability
+Alternate things for sub-queries are CTE(Common table expressions)
+subquery should start with start/update/insert/delete
+sub-queries and then temperary tables and then views(outside of query execution level)
+CTE Views and Temporary Tables.
+Stored Procedures and Query Optimisation.
+Thursday/Friday -- Assesment on all the topics.
