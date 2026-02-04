@@ -1,0 +1,54 @@
+-- Assignment3 Sub-queries
+-- 1) display all customer details who have made more than 5 payments.
+select * from customer AS c
+where c.customer_id IN(select p.customer_id from  payment AS p
+GROUP BY p.customer_id
+HAVING count(p.payment_id) >5) ;
+
+--2) Find the names of actors who have acted in more than 10 films.
+select * from sakila.film_actor
+select * from sakila.film
+
+select a.actor_id,a.first_name,a.last_name from sakila.actor a
+where a.actor_id IN (select f.actor_id from sakila.film_actor f
+Group by f.actor_id
+having count(film_id) >10);
+
+-- 3)Find the names of customers who never made a payment.
+select customer_id,first_name,last_name from sakila.customer
+where (select customer_id from sakila.payment
+where payment_id like 'NULL'); -- Just use ! for not//
+
+--4) List all films whose rental rate is higher than the average rental rate of all films.
+select title,film_id,rental_rate from sakila.film 
+where rental_rate > (select AVG(rental_rate) from sakila.film);
+
+--5) List the titles of films that were never rented.
+select title,rental_duration from sakila.film
+where rental_duration IN (select rental_duration from sakila.film
+where rental_duration like 'NULL');  -- 'not like' will give rental_duration not null details.
+
+-- 6)Display the customers who rented films in the same month as customer with ID 5.
+
+SELECT first_name,last_name from sakila.customer
+where customer_id IN (select customer_id from sakila.rental
+where MONTH(rental_date) IN(select MONTH(rental_date) from sakila.rental
+where customer_id = 5));
+
+--7) Find all staff members who handled a payment greater than the average payment amount.
+select first_name,last_name from sakila.staff
+where staff_id IN(select staff_id from sakila.payment
+where amount > (select AVG(amount)from sakila.payment));
+
+--8) Show the title and rental duration of films whose rental duration is greater than the average.
+select title,rental_duration from sakila.film
+where rental_duration > (select AVG(rental_duration) from sakila.film);
+
+--9) Find all customers who have the same address as customer with ID 1.
+select first_name,last_name,address_id from sakila.customer
+where address_id IN(select address_id from sakila.customer
+where customer_id = 1);
+
+--10) List all payments that are greater than the average of all payments.
+select payment_id,customer_id,payment_date,amount from sakila.payment
+where amount > (select avg(amount) from sakila.payment);
