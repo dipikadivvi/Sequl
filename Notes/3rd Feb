@@ -1,0 +1,4 @@
+Stored Procedures.
+Delimiter is indicator saying your code is starting and ending. Apart from this part, outside one is not a stored procedure.
+Not IN(Mulple records searching) /Not equal(1 record condition)
+Jupiter notebook using ANAkonda.  or VSCODE(Jupiter notebook extension).
