@@ -1,0 +1,31 @@
+#stored procedures class re-cap
+If we want to retrive old medical records... it takes lot of time if we have lot of records. How do we get the result as soon as possible without wasting client time.
+Last 6 months records of 1 person. but only 6 records.(It needs lot of filtering) It need to optimize in a very effecient way.
+Optimization comes in to picture here...
+Indexes. -- optimizing the query,cost,time
+clustered index --- the primary key.(automatically sort the data)
+non-clustered indexes are something we create when we don't have primary key. It's not going to physically sort the data and not present in physical table also(unlike the primary ket which sort data in the given order)
+it goes to memory and it created the reference pointer. We can create many number of non clustered indexes.
+Natural Key(Forever it is unique by Nature.(SSN/AADHAR)) and Surrogate key.(Not unique by nature Ex: Company ID)
+Primary Key and Foreign Key-- Unique Identifier. Parent-child key.
+Each table has only one primary key(No Dublicates. UNique indentifier)
+All Natural keys are primary keys... but not all primary keys are not natural keys.(Emp ID will have primary key but is it not naturally unique)
+Passport number-- it is unique. Natural key and Primary Key
+Amazon return is computer generated primary key but not the natural key
+IN a Table we can have many matural keys.
+All Natural keys,Surrogate keys, are primary keys.
+Query Optimizing techniques(Fine Tuning) we follow--
+1)Use only necessary columns.
+2)Use Where before Groupby and Having
+3)Use Joins than sub-queryies(Because they are more efficient)
+4)Avoid function on indexed column
+5)Always use Limit
+6)USe CTE for more readability 
+7)Use explain to understand the query execution plan
+8)Maintanance commands(both made changes... then we should use ANALYSE,OPTIMIZE commands)
+9)Avoid Large OFFSETS in pagination
+
+
+
+
+4)
