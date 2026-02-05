@@ -1,0 +1,50 @@
+SQL works on DAtabases or structed data to query
+Otherthan querying we use languages like python/java etc. Python is more simple and less code
+
+Datatypes in Python--- Integer,
+a=1
+explicit conversion add str to convert to string
+Implicit conversion
+Floats
+type--- give the type of the value
+string \' then it works... like using backslash or escape characters
+how to use both single and double quoets in a statement
+naming convesion of variables.
+1)Not start with special characters or numbers
+2)no builin function keywords like 'int'
+Complex numbers and Real numbers(what scenarios we use complex numbers?  real mathematical data.
+j-1.0-2.0j
+j
+type(j)
+Dynamic Typing.
+ten=10
+ten='ten'
+automatically understand int or string
+Mathematical,comparision and Logical operations, assignment operations,
+1)+,-,*,/,//,%,**
+2)==,!=,<,>,<=,>=
+3)x=TRUE
+y=FALSE
+print(x and y)
+print (x or y)
+4)x=5
+x=+5
+x=-5
+x +=5   x=x+5
+x -=5    x=x-5
+x *=3     x=x*3
+--- Input functions(giving input by the user)
+name= input("enter your name")
+normal strin and f string differences. when you want to print something and take variables in to print then we use it
+print("I love {},my subject is {}".format(language,subject))
+difference between = and ==
+= is assigning and == is for comparision
+Branching(if/elif/else), case
+print(x)
+
+Does == check both type and variable?? YES
+1 == '1'
+FALSE
+1 == 1
+TRUE
+
