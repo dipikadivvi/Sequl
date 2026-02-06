@@ -1,0 +1,103 @@
+-- whats databse?
+Database is a Organised collection of structed information/data.
+-- whats database management system?  DBMS to manage all structed data.
+-- whats sql? Structured query languange 
+-- what is schema? It shows how data is stored along with relations and rules.
+-- sql commands - whats ddl,dml,dql, dcl, tcl
+
+-- DDL - Data defination lang /create,alter,drop,truncate
+-- DML - data manipulative  /insert,update,delete
+-- DQL - Data query lang /select
+-- dcl - data control lang /grant,revoke
+-- tcl - transation control /commit,rollback,savepoint
+
+
+
+
+
+create database testing;
+create table testing.sample
+(fname varchar(100),
+lname varchar(100),
+id int,
+dob date
+)
+
+INSERT INTO testing.sample(fname,lname,id,dob)
+values
+('apple','a',12,'2020-01-10'),
+('banana','b',10,'2020-02-11'),
+('carrot','c',11,'2020-03-12');
+
+select * from testing.sample;
+
+INSERT INTO testing.sample(id,fname,lname)
+values(2,'alpha','dog'),
+(3,'beta','');
+
+Alter table testing.sample
+ADD dept varchar(200);
+
+alter table testing.sample
+rename column dept to department;
+-- sql constraints are used to specify rules for data in a table
+-- not null andn unique constraints(These are fundamental SQL rules that ensures data integrity)
+drop table if exists testing.samp;
+
+create table testing.sample1
+(id int UNIQUE NOT NULL,
+fname varchar(100) NOT NULL,
+age int,
+lname varchar(100));
+
+INSERT INTO testing.sample1(id,fname,lname,age)
+VALUES (1,'zara','gang',21),
+(2,'yora','han',22),
+(3.1, 'xero','',22);
+
+select * from testing.sample1;
+
+INSERT into testing.sample1(id,fname)
+values(5,null);
+
+alter table testing.sample1
+add primary key(id);
+
+select constraint_name from information_schema.TABLE_constraints
+where table_schema = 'testing'
+and table_name = 'sample1'
+and constraint_type = 'primary key';
+
+-- -- gives the row names which has constraints on it.
+
+alter table testing.sample1
+drop primary key;
+
+ALTER TABLE testing.sample1
+ADD CONSTRAINT PK_Person PRIMARY KEY (ID);
+
+drop table testing.sample2;
+select * from testing.sample1;
+
+create table testing.sample2
+(id int PRIMARY KEY,
+department varchar(100),
+gender varchar(200),
+store_id int,
+age int,
+FOREIGN KEY (age) references testing.sample1(id)
+on delete restrict);
+
+insert into testing.sample2(id,department,gender,store_id,age)
+values(5,'aaa','f',20,11),(6,'bbb','m',10,12),(7,'ccc','m',15,13),(4,'ddd','f',15,14);
+
+create table testing.sample2(
+foreign key (id) references testing.sample1(id) 
+on delete restrict
+on update cascade);
+
+-- difference between delete and drop. delete is deleting some records based on the condition given but drop will drop entire table.
+#Foregin KEY
+-- A FOREIGN KEY is a field (or collection of fields) in one table, that refers to the PRIMARY KEY in another table.
+-- The table with the foreign key is called the child table, and the table with the primary key is called the referenced or parent table.
+
