@@ -1,0 +1,145 @@
+Assessment on SQL
+with CustomerRentals as
+(
+  select customer_id , amount 
+  from sakila.payment
+  where amount>=30
+  )
+  
+select c.first_name , cr.amount
+from CustomerRentals cr
+join sakila.customer c
+on c.customer_id = cr.customer_id;
+
+
+Validating
+select amount
+from sakila.payment
+order by amount desc;
+
+
+
+
+-- USING CTE fetch top 5 categories by rental count
+
+with Top_rentalct AS(
+select category_id from sakila.film_category C 
+group by category_id
+ORDER by category_id DESC LIMIT 5
+JOIN 
+)
+
+WITH CategoryRentalCounts AS (
+    SELECT 
+        c.name AS category_name,
+        COUNT(r.rental_id) AS rental_count
+    FROM sakila.category c
+    JOIN sakila.film_category fc ON c.category_id = fc.category_id
+    JOIN sakila.inventory i ON fc.film_id = i.film_id
+    JOIN sakila.rental r ON i.inventory_id = r.inventory_id
+    GROUP BY c.name
+)
+SELECT category_name, rental_count
+FROM CategoryRentalCounts
+ORDER BY rental_count DESC
+LIMIT 5;
+
+
+select 
+select * from sakila.film;
+select * from sakila.rental
+select * from sakila.film_category
+
+
+-- customers who rented atleast once with rating pg-13 film.
+
+select * from sakila.film
+where rating = 'PG-13';
+
+select c.customer_id,c.first_name,c.last_name from 
+sakila.customer C JOIN sakila.film_category fc ON c.customer_id = fc.customer_id 
+JOIN sakila.film f ON fc.film_id = f.film_id
+where f.rating = 'PG';
+
+
+
+--- Get the films in Action category
+
+select * from sakila.category;
+
+select f.title, f.film_id from sakila.film f JOIN sakila.film_category fc
+ON f.film_id = fc.film_id JOIN sakila.category c ON fc.category_id = c.category_id
+where c.name = 'Action' ;
+
+-- films longer than Average film length
+select * from sakila.film;
+
+select film_id,title,length from sakila.film
+where length >(select AVG(length) from sakila.film);
+
+select film_id,title,avg(length) AS average_lenth from sakila.film
+where length(title) >(select AVG(length) from sakila.film
+where film_id =1)
+group by length;
+
+select title,length,avg(length)
+from film where length > (select avg(length) from film)
+group by title,length;
+
+select film_id,title from sakila.film
+where length(title) <(select AVG(length) from sakila.film);
+
+
+--- 02/10
+-- bring the total count of currently rented films per store
+-- store,rental,film_category,category,inventory
+select count(Distinct(r.rental_id)) AS currently_rented, i.store_id from sakila.rental r JOIN sakila.inventory i ON i.inventory_id=r.inventory_id
+where r.return_date is null
+group by i.store_id;
+    
+    
+--- using CTE customers with their respective rental details who made atleast 30 rentals.
+
+WITH customer_rented AS (
+select customer_id,count(rental_id) AS total_rental from rental
+group by customer_id
+having count(rental_id)>30)
+select c.customer_id,c.first_name,c.last_name,cr.total_rental from customer c JOIN customer_rented cr ON 
+c.customer_id = cr.customer_id
+order by cr.total_rental DESC;
+
+show errors;
+
+
+-- customers who rented the films twice or more than that
+use sakila;
+select c.customer_id,c.first_name,count(r.rental_id) as twice_rented from sakila.customer c
+JOIN sakila.rental r ON c.customer_id = r.customer_id JOIN sakila.inventory i  on r.inventory_id = i.inventory_id
+JOIN sakila.film f on f.film_id = i.film_id
+group by c.customer_id,c.first_name
+having count(r.rental_id) >=2
+order by twice_rented DESC;
+
+
+select * from sakila.film;
+
+
+-- using CTE find payments by customers in london city
+with london_customer AS(
+select c.customer_id,c.first_name,c.last_name from customer c JOIN address ad ON c.address_id = ad.address_id
+JOIN city ct ON ad.city_id = ct.city_id
+where city = 'London')
+select lc.customer_id,lc.first_name,p.payment_id,p.rental_id,sum(amount) AS Total_payment from payment p JOIN london_customer lc
+ON p.customer_id = lc.customer_id
+group by p.payment_id,p.rental_id
+order by Total_payment DESC;
+
+-- using sub-quey customers made payments greater than 8
+use sakila;
+select customer_id,first_name,last_name from customer
+where customer_id IN(select customer_id from payment
+group by customer_id
+having count(payment_id) >8);
+
+
+
