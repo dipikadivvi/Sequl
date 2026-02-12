@@ -1,0 +1,39 @@
+-- previous class revise
+For loop and While loop-- Iterate over the iterable object until the 
+iterate on the sequence is for for loop
+while is for block of code until the condition is satisfied.
+Approach to learning the code is  write steps to what is the ask, what to do, how to do like a breakdown then proceed
+Ex:add list of numbers form 1-10
+1)Read the input
+2)Take numbers one by one and add then... so we need a loop to iterate the data
+3)create another variable which store the output and then keep on add
+we have function called range()  ex: list(range(1,15,2))
+so, it starts from 1 and go by step count of 2 until it reaches 15 
+***index here always start from 0.
+if you want to consider last index value also, then we must add range(x+)1
+range will not include upper limit value. that is why we should use +1 always to be included
+
+-- reverse string x=s(i)+1 chandler
+c+'' = 'c'
+h+'c' = 'hc'
+a+'hc'='ahc'
+it works like that.
+
+when do we use length+1 and just length?
+range(0,10)-->0-9 values
+range(len(x)) this will give values until 9 only not 10. If you want to include 10 also then you should give like 
+range(len(x)+1)
+
+while loop keep continue until the condition is met. I want to loop until a condition is true and then exit from loop after that.
+Q: Main difference between while and for loop.. when do we use them?
+For-- When we know how many times it has to loop.
+Iterates over a string,range,list
+Automatically handle the iteration.
+
+While -- when you don't know how many times it has to iterate
+Runs as long as the condition is true
+Must manually update the condition.
+
+Break and Continue.
+From a bunch of fruits, get what to you want and then break from loop, continue is continue and check how many are there but skip that ocuurance and print the output
+
