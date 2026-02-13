@@ -1,1 +1,27 @@
+--- recap of previous class
+List Comprehension what is it?
+difference between string and list.
+main difference is strings are immutable.. but we can add or edit list(it is muttable). string is always a string but list is a combination of string,number anything
+real time usecase for list. store like student details, 
+TUPLES.
+when we don't want to change the list... so this is not muttable. Hence we have Tuples.
+If we want to add data to tuples then we convert it to List and then add the values and then again change to tuples
 
+SETS: tuples and list have duplicates... hence we use sets.
+unordered collection of sequence elements.
+pop() will remove last element but in sets, 1st element is gone... But randomly pics the number.
+set() is for removing dublicates, give unique items.
+Dictionary--- key value pairs.  This is also like a array which can store any type of data... even it hold another dictionary inside.
+mostly realtime people use dictionary or list.
+inseption of dictionaries--- which is nesting of dictionaries.
+each value have a key and print/pull which one you want to get it out. Like 
+Dictionary Comprehension.---
+shallow copy and Deep copy-- original data list we have is also get changed, like kind of creating a new list but then it will change the new version also.
+deep copy is create a dublicate and then change the data.
+shallow copy, works differently with just the list of objects and list of list objects.(In ths list of list it changes in both original and shallow file. However, just list of objects means changing only in shallow copy and not in original)
+
+we want code to repeat then we use functions... 
+def say_hellow():
+print(hellow)
+difference between print and return.. print will just print but return will (be able to re-use )create a variable and store data in it and share it.
+return()-- in cases like you take the input and then add or subtract it will another number then update it... we use return. for re-using.
