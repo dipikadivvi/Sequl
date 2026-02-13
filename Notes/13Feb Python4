@@ -25,3 +25,9 @@ def say_hellow():
 print(hellow)
 difference between print and return.. print will just print but return will (be able to re-use )create a variable and store data in it and share it.
 return()-- in cases like you take the input and then add or subtract it will another number then update it... we use return. for re-using.
+
+
+create a project idea.SQL, machine learning and zen AI, data warehousing
+
+comeup with idea, to be able to extend with all other technologies... Analytics posibility should be there.
+Anything that helps me with daily activities. Or with people around us. 
