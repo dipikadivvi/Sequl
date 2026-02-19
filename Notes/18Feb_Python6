@@ -1,0 +1,15 @@
+Previous class---
+Modules and Libraries
+.py file is the modules.
+try catch and except
+try--catch--finally. how it executes in except and finally
+File Operations.
+strip-- cleanup the white spaces.
+write mode-- it overwrite old data. So we use append mode for this.
+file.readline(for single line), file.readlines(for multiple limes.)
+seek-- it initialize your starting point of it
+r+ mode is for read +write mode operation on file.
+working with xl files
+df.to_excel is to change the file mode to excel.
+convert the semi staructed data to dataframe structure using pandas.
+
